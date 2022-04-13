@@ -32,4 +32,12 @@ describe('App', () => {
             within(searchBarForm).getByRole('button', { name: /search/i })
         ).toBeInTheDocument();
     });
+
+    test('should render book list', () => {
+        renderComponent();
+
+        expect(
+            screen.getByRole('list', { name: /book list/i })
+        ).toBeInTheDocument();
+    });
 });

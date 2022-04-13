@@ -1,0 +1,204 @@
+{
+    "records": {
+        "/books/OL9160829M": {
+            "isbns": ["9626340517", "9789626340516"],
+            "issns": [],
+            "lccns": [],
+            "oclcs": [],
+            "olids": ["OL9160829M"],
+            "publishDates": ["July 1995"],
+            "recordURL": "https://openlibrary.org/books/OL9160829M/The_Great_Gatsby_(Modern_Classics)",
+            "data": {
+                "url": "https://openlibrary.org/books/OL9160829M/The_Great_Gatsby_(Modern_Classics)",
+                "key": "/books/OL9160829M",
+                "title": "The Great Gatsby (Modern Classics)",
+                "authors": [
+                    {
+                        "url": "https://openlibrary.org/authors/OL27349A/Francis_Scott_Key_Fitzgerald",
+                        "name": "Francis Scott Key Fitzgerald"
+                    },
+                    {
+                        "url": "https://openlibrary.org/authors/OL7972701A/Francis_Scott_Fitzgerald",
+                        "name": "Francis Scott Fitzgerald"
+                    },
+                    {
+                        "url": "https://openlibrary.org/authors/OL9087303A/F_Scott_Fitzgerald",
+                        "name": "F Scott Fitzgerald"
+                    },
+                    {
+                        "url": "https://openlibrary.org/authors/OL9107460A/F._Scott_Fitzgerald",
+                        "name": "F. Scott Fitzgerald"
+                    },
+                    {
+                        "url": "https://openlibrary.org/authors/OL2801965A/F._Fitzgerald",
+                        "name": "F. Fitzgerald"
+                    }
+                ],
+                "weight": "3.5 ounces",
+                "identifiers": {
+                    "goodreads": ["815370"],
+                    "librarything": ["2964"],
+                    "isbn_10": ["9626340517"],
+                    "isbn_13": ["9789626340516"],
+                    "openlibrary": ["OL9160829M"]
+                },
+                "publishers": [{ "name": "Naxos Audio Books" }],
+                "publish_date": "July 1995",
+                "subjects": [
+                    {
+                        "name": "Married people, fiction",
+                        "url": "https://openlibrary.org/subjects/married_people,_fiction"
+                    },
+                    {
+                        "name": "American fiction (fictional works by one author)",
+                        "url": "https://openlibrary.org/subjects/american_fiction_(fictional_works_by_one_author)"
+                    },
+                    {
+                        "name": "Fiction, psychological",
+                        "url": "https://openlibrary.org/subjects/fiction,_psychological"
+                    },
+                    {
+                        "name": "Long island (n.y.), fiction",
+                        "url": "https://openlibrary.org/subjects/long_island_(n.y.),_fiction"
+                    },
+                    {
+                        "name": "Fiction",
+                        "url": "https://openlibrary.org/subjects/fiction"
+                    },
+                    {
+                        "name": "Rich people",
+                        "url": "https://openlibrary.org/subjects/rich_people"
+                    },
+                    {
+                        "name": "Mistresses",
+                        "url": "https://openlibrary.org/subjects/mistresses"
+                    },
+                    {
+                        "name": "Married women",
+                        "url": "https://openlibrary.org/subjects/married_women"
+                    },
+                    {
+                        "name": "Traffic accidents",
+                        "url": "https://openlibrary.org/subjects/traffic_accidents"
+                    },
+                    {
+                        "name": "First loves",
+                        "url": "https://openlibrary.org/subjects/first_loves"
+                    },
+                    {
+                        "name": "Revenge",
+                        "url": "https://openlibrary.org/subjects/revenge"
+                    },
+                    {
+                        "name": "American Manuscripts",
+                        "url": "https://openlibrary.org/subjects/american_manuscripts"
+                    },
+                    {
+                        "name": "Facsimiles",
+                        "url": "https://openlibrary.org/subjects/facsimiles"
+                    },
+                    {
+                        "name": "Manuscripts",
+                        "url": "https://openlibrary.org/subjects/manuscripts"
+                    },
+                    {
+                        "name": "Antiheroes",
+                        "url": "https://openlibrary.org/subjects/antiheroes"
+                    },
+                    {
+                        "name": "Man-woman relationships",
+                        "url": "https://openlibrary.org/subjects/man-woman_relationships"
+                    },
+                    {
+                        "name": "Upper class",
+                        "url": "https://openlibrary.org/subjects/upper_class"
+                    },
+                    {
+                        "name": "American literature",
+                        "url": "https://openlibrary.org/subjects/american_literature"
+                    },
+                    {
+                        "name": "Young adult fiction, comics & graphic novels, classic adaptation",
+                        "url": "https://openlibrary.org/subjects/young_adult_fiction,_comics_&_graphic_novels,_classic_adaptation"
+                    },
+                    {
+                        "name": "Young adult fiction, social themes, class differences",
+                        "url": "https://openlibrary.org/subjects/young_adult_fiction,_social_themes,_class_differences"
+                    },
+                    {
+                        "name": "Young adult fiction, classics",
+                        "url": "https://openlibrary.org/subjects/young_adult_fiction,_classics"
+                    },
+                    {
+                        "name": "Fiction, historical, general",
+                        "url": "https://openlibrary.org/subjects/fiction,_historical,_general"
+                    },
+                    {
+                        "name": "Fiction, general",
+                        "url": "https://openlibrary.org/subjects/fiction,_general"
+                    },
+                    {
+                        "name": "New york (n.y.), fiction",
+                        "url": "https://openlibrary.org/subjects/new_york_(n.y.),_fiction"
+                    }
+                ],
+                "cover": {
+                    "small": "https://covers.openlibrary.org/b/id/2293847-S.jpg",
+                    "medium": "https://covers.openlibrary.org/b/id/2293847-M.jpg",
+                    "large": "https://covers.openlibrary.org/b/id/2293847-L.jpg"
+                }
+            },
+            "details": {
+                "bib_key": "isbn:9626340517",
+                "info_url": "https://openlibrary.org/books/OL9160829M/The_Great_Gatsby_(Modern_Classics)",
+                "preview": "noview",
+                "preview_url": "https://openlibrary.org/books/OL9160829M/The_Great_Gatsby_(Modern_Classics)",
+                "thumbnail_url": "https://covers.openlibrary.org/b/id/2293847-S.jpg",
+                "details": {
+                    "publishers": ["Naxos Audio Books"],
+                    "weight": "3.5 ounces",
+                    "covers": [2293847],
+                    "physical_format": "Audio CD",
+                    "last_modified": {
+                        "type": "/type/datetime",
+                        "value": "2010-08-12T00:53:00.903277"
+                    },
+                    "latest_revision": 7,
+                    "key": "/books/OL9160829M",
+                    "authors": [
+                        {
+                            "key": "/authors/OL27349A",
+                            "name": "Francis Scott Key Fitzgerald"
+                        }
+                    ],
+                    "contributions": ["William Hope (Narrator)"],
+                    "subjects": [
+                        "Modern fiction",
+                        "Fiction",
+                        "Audio Adult: Books On Tape",
+                        "Classics"
+                    ],
+                    "edition_name": "Abridged edition",
+                    "languages": [{ "key": "/languages/eng" }],
+                    "title": "The Great Gatsby (Modern Classics)",
+                    "identifiers": {
+                        "goodreads": ["815370"],
+                        "librarything": ["2964"]
+                    },
+                    "created": {
+                        "type": "/type/datetime",
+                        "value": "2008-04-30T09:38:13.731961"
+                    },
+                    "isbn_13": ["9789626340516"],
+                    "isbn_10": ["9626340517"],
+                    "publish_date": "July 1995",
+                    "works": [{ "key": "/works/OL468431W" }],
+                    "type": { "key": "/type/edition" },
+                    "physical_dimensions": "5.4 x 4.9 x 0.4 inches",
+                    "revision": 7
+                }
+            }
+        }
+    },
+    "items": []
+}
