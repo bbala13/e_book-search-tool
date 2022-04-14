@@ -1,8 +1,12 @@
 import React from 'react';
 
 const SearchBar = () => {
+    const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+    };
+
     return (
-        <form role="search">
+        <form role="search" onSubmit={onSubmitHandler}>
             <label htmlFor="search-bar">
                 <span className="visually-hidden">Search</span>
             </label>

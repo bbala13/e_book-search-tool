@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import imageNotFound from '../../../notFoundAssets/imageNotFound.jpg';
 
 export const StyledDiv = styled.div`
     border: 1px solid red;
     display: flex;
-    min-height: 170px;
+    min-height: 200px;
 
     align-items: center;
     justify-content: center;
@@ -12,10 +13,13 @@ export const StyledDiv = styled.div`
 `;
 
 //todo
-export const BookCover = styled.div`
-    background-image: url('https://covers.openlibrary.org/b/id/8759248-L.jpg');
+interface BookCoverProps {
+    coverUrl: string | undefined;
+}
+export const BookCover = styled.div<BookCoverProps>`
+    background-image: ${({ coverUrl }) => `url(${coverUrl})`};
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     padding: 3rem;
     align-self: stretch;
 `;
@@ -23,4 +27,5 @@ export const BookCover = styled.div`
 export const BookContents = styled.div`
     flex-grow: 1;
     text-transform: capitalize;
+    padding: 0.5rem;
 `;
