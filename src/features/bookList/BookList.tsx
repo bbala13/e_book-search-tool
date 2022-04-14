@@ -10,15 +10,22 @@ const BookList = () => {
         <StyledUL aria-label="book list">
             {books.map((book) => {
                 //guard book isbn
-                const cover = book.isbn
-                    ? `https://covers.openlibrary.org/b/isbn/${book.isbn[0]}-M.jpg`
-                    : '';
+                let cover = book.isbn
+                    ? `https://covers.openlibrary.org/b/isbn/${book.isbn[0]}-M.jpg?default=false`
+                    : imageNotFound;
 
                 if (!book.isbn) {
-                    console.log('not', cover);
+                    console.log('not', book);
                 }
-                const singleISBN = book.isbn ? book.isbn[0] : '';
-                //console.log(cover);
+
+                if (book.isbn) {
+                    if (book.isbn[0] === '9798795318738') {
+                        console.log(book);
+                    }
+                }
+
+                const singleISBN = book.isbn ? book.isbn[0] : 'error';
+
                 return (
                     <Book
                         key={book.key}

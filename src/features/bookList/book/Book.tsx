@@ -31,7 +31,7 @@ const Book = ({
 
     return (
         <StyledDiv>
-            <BookCover coverUrl={cover}></BookCover>
+            {/* <BookCover coverUrl={cover}></BookCover> */}
             <BookContents>
                 <li>{title}</li>
                 <img src={cover} alt="book cover" title={title} />
