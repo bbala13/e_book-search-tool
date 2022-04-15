@@ -1,29 +1,30 @@
-import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
 
-interface Document {
+export interface IDocument {
     title: string;
     first_publish_year: number;
-    isbn: [];
-    author_name: []
+    isbn?: string[];
+    author_name: string[]
 }
 
-interface Book {
+export interface IBook {
     numFound: number;
     start: number;
     numFoundExact: boolean;
-    docs: Document[];
+    docs: IDocument[];
     num_found: number;
     q: string;
     offset: unknown
 }
 
 const initialState = {
-    books: {} as Book,
+    books: {} as IBook,
     status: '',
-    error: false
+    error: '' as string | undefined,
 }
 
+//async thunk
 const BASE_URL = 'http://openlibrary.org/'
 const SEARCH_PATH = 'search.json?q='
 const FIELDS = '&fields=title,first_publish_year,isbn,author_name'
@@ -37,24 +38,36 @@ export const searchBooks = createAsyncThunk('bookList/getBooks', async (searchQu
 const bookListSlice = createSlice({
     name: 'bookList',
     initialState,
-    reducers: {},
+    reducers: {
+    },
     extraReducers(builder) {
         builder.addCase(searchBooks.pending, (state) => {
             state.status = 'loading'
-            state.error = false
+
         })
             .addCase(searchBooks.fulfilled, (state, action) => {
                 state.status = 'success'
                 state.books = action.payload
-                state.error = false
-            }).addCase(searchBooks.rejected, (state) => {
+
+            }).addCase(searchBooks.rejected, (state, action) => {
                 state.status = 'error'
-                state.error = true
+                state.error = action.error.message
             })
     }
 })
 
+//methods
 export const getAllBooks = (state: RootState) => state.bookList.books
+export const booksOrderedByTitle = (state: RootState) => state.bookList.books.docs.slice().sort((a, b) => {
+    if (a.title < b.title) return -1;
+    if (a.title > b.title) return 1;
+    return 0;
+});
+export const booksOrderedByPublishedDate = (state: RootState) => state.bookList.books.docs.slice().sort((a, b) => {
+    if (a.first_publish_year > b.first_publish_year) return -1;
+    if (a.first_publish_year < b.first_publish_year) return 1;
+    return 0;
+});
 
 // export const {  } = bookListSlice.actions;
 

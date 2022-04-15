@@ -4,16 +4,16 @@ import { store } from './../../app/store';
 import BookList from './BookList';
 import dummyBookData from '../../fixtures/dummyData/searchResults.json';
 
-const renderComponent = () =>
-    render(
-        <Provider store={store}>
-            <BookList />
-        </Provider>
-    );
+// const renderComponent = () =>
+//     render(
+//         <Provider store={store}>
+//             <BookList />
+//         </Provider>
+//     );
 
 describe('BookList', () => {
     test('should render book list', () => {
-        renderComponent();
+        //renderComponent();
 
         expect(
             screen.getByRole('list', { name: /book list/i })
