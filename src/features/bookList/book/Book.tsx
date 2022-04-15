@@ -1,4 +1,5 @@
 import React from 'react';
+import { IDocument } from '../bookListSlice';
 import { BookContents, BookCover, StyledDiv } from './Book.styles';
 
 interface Props {
@@ -6,16 +7,14 @@ interface Props {
     cover: string | undefined;
     author_name: string[] | undefined;
     first_publish_year: number;
-    isbn: string | undefined;
 }
 
 const Book = ({
     title,
-    cover,
+    cover_i,
     author_name,
     first_publish_year,
-    isbn,
-}: Props) => {
+}: IDocument) => {
     //guard for author name; todo
     let authors: string;
     if (author_name) {
@@ -34,10 +33,9 @@ const Book = ({
             {/* <BookCover coverUrl={cover}></BookCover> */}
             <BookContents>
                 <li>{title}</li>
-                <img src={cover} alt="book cover" title={title} />
+                <img src={cover_i} alt="book cover" title={title} />
                 <li>{authors}</li>
                 <li>{first_publish_year}</li>
-                <li>{isbn}</li>
             </BookContents>
         </StyledDiv>
     );

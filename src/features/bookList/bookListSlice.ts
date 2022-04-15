@@ -4,8 +4,8 @@ import { RootState } from "../../app/store";
 export interface IDocument {
     title: string;
     first_publish_year: number;
-    isbn?: string[];
-    author_name: string[]
+    author_name: string[];
+    cover_i?: string;
 }
 
 export interface IBook {
@@ -27,7 +27,7 @@ const initialState = {
 //async thunk
 const BASE_URL = 'http://openlibrary.org/'
 const SEARCH_PATH = 'search.json?q='
-const FIELDS = '&fields=title,first_publish_year,isbn,author_name'
+const FIELDS = '&fields=title,first_publish_year,cover_i,author_name'
 
 //dispatches pending action
 export const searchBooks = createAsyncThunk('bookList/getBooks', async (searchQuery: string) => {

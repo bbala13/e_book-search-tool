@@ -13,12 +13,10 @@ const SearchBar = () => {
     const debouncedSearch = useDebounce(searchInput, 500);
 
     const dispatch = useDispatch();
-    const newUserInput = useSelector(searchBarResult);
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchInput(e.target.value);
     };
-    console.log(newUserInput);
     useEffect(() => {
         console.log('request made');
     }, [debouncedSearch]);

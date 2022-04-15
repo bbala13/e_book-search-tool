@@ -29,3 +29,8 @@ export const BookContents = styled.div`
     text-transform: capitalize;
     padding: 0.5rem;
 `;
+
+export const StyledNotFoundImage = styled.img`
+    src: url(${imageNotFound});
+    height: 100px;
+`;
