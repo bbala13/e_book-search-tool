@@ -58,16 +58,7 @@ const bookListSlice = createSlice({
 
 //methods
 export const getAllBooks = (state: RootState) => state.bookList.books
-export const booksOrderedByTitle = (state: RootState) => state.bookList.books.docs.slice().sort((a, b) => {
-    if (a.title < b.title) return -1;
-    if (a.title > b.title) return 1;
-    return 0;
-});
-export const booksOrderedByPublishedDate = (state: RootState) => state.bookList.books.docs.slice().sort((a, b) => {
-    if (a.first_publish_year > b.first_publish_year) return -1;
-    if (a.first_publish_year < b.first_publish_year) return 1;
-    return 0;
-});
+
 
 // export const {  } = bookListSlice.actions;
 

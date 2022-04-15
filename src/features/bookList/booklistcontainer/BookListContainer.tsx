@@ -2,12 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { searchBarResult } from '../../searchBar/searchBarSlice';
 import BookList from '../BookList';
-import {
-    booksOrderedByPublishedDate,
-    booksOrderedByTitle,
-    getAllBooks,
-    searchBooks,
-} from '../bookListSlice';
+import { getAllBooks, searchBooks } from '../bookListSlice';
 import { StyledDiv } from './BookListContainer.styles';
 
 ////https://openlibrary.org/search.json?q=the+great+gatsby&fields=title,first_publish_year,isbn,author_name
@@ -26,19 +21,30 @@ const BookListContainer = () => {
         dispatch(searchBooks(searchItem));
     }, [searchItem, dispatch]);
 
-    //use suspense
-    const orderedByTitle = useSelector(booksOrderedByTitle);
-    const recentlyPublished = useSelector(booksOrderedByPublishedDate);
+    //update books
+    useEffect(() => {
+        setBooks(docs);
+    }, [docs]);
 
     const [books, setBooks] = useState(docs);
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
         let selectedOption = e.target.value;
-        if (docs) {
+        if (books) {
             if (selectedOption === 'Alphabetically') {
-                setBooks(orderedByTitle);
+                const sortedBooks = books.slice().sort((a, b) => {
+                    if (a.title < b.title) return -1;
+                    if (a.title > b.title) return 1;
+                    return 0;
+                });
+                setBooks(sortedBooks);
             } else if (selectedOption === 'Recently Published') {
-                setBooks(recentlyPublished);
+                const sortedBooks = books.slice().sort((a, b) => {
+                    if (a.first_publish_year > b.first_publish_year) return -1;
+                    if (a.first_publish_year < b.first_publish_year) return 1;
+                    return 0;
+                });
+                setBooks(sortedBooks);
             }
         }
     };
