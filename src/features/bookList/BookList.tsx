@@ -11,9 +11,9 @@ const BookList = () => {
             {books.map((book) => {
                 //guard book isbn
                 let cover = book.isbn
-                    ? `https://covers.openlibrary.org/b/isbn/${book.isbn[0]}-M.jpg?default=false`
+                    ? `https://covers.openlibrary.org/b/isbn/${book.isbn[0]}-M.jpg`
                     : imageNotFound;
-
+                //?default=false
                 if (!book.isbn) {
                     console.log('not', book);
                 }

@@ -1,18 +1,24 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import useDebounce from '../../hooks/useDebounce';
+import { newSearchInput, searchBarResult } from './searchBarSlice';
 
 const SearchBar = () => {
     const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        dispatch(newSearchInput(searchInput));
     };
 
     const [searchInput, setSearchInput] = useState('');
     const debouncedSearch = useDebounce(searchInput, 500);
 
+    const dispatch = useDispatch();
+    const newUserInput = useSelector(searchBarResult);
+
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchInput(e.target.value);
     };
-
+    console.log(newUserInput);
     useEffect(() => {
         console.log('request made');
     }, [debouncedSearch]);
