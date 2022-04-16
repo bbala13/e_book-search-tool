@@ -20,7 +20,7 @@ const Book = ({
     if (author_name) {
         authors = author_name.join(', ');
     } else {
-        authors = '';
+        authors = 'Unknown';
     }
 
     return (

@@ -26,6 +26,8 @@ const BookListContainer = () => {
 
     //fetch books
     useEffect(() => {
+        if (searchItem === '') return;
+
         dispatch(searchBooks(searchItem));
     }, [searchItem, dispatch]);
 
@@ -55,17 +57,6 @@ const BookListContainer = () => {
     }, [docs, sortedStatus]);
 
     const [books, setBooks] = useState(docs);
-
-    const onChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        let selectedOption = e.target.value;
-        if (books) {
-            if (selectedOption === 'Alphabetically') {
-                dispatch(sortBooks(selectedOption));
-            } else if (selectedOption === 'Recently Published') {
-                dispatch(sortBooks(selectedOption));
-            }
-        }
-    };
 
     return (
         <StyledDiv>

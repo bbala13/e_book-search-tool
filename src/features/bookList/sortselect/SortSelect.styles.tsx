@@ -15,6 +15,7 @@ export const StyledSelect = styled.select`
     appearance: none;
     border-radius: 2px;
     cursor: pointer;
+    text-align: center;
 
     &:focus {
         outline: solid var(--inverted);

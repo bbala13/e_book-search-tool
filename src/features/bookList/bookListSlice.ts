@@ -1,5 +1,8 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
+import dummyBookListData from '../../fixtures/dummyData/searchResults.json';
+
+
 
 export interface IDocument {
     title: string;
@@ -18,11 +21,16 @@ export interface IBook {
     offset: unknown
 }
 
+const { docs, numFound, numFoundExact, num_found, offset, q, start } = dummyBookListData;
+
+const dummyDocs = docs as IDocument[];
+
 const initialState = {
-    books: { docs: [{ title: 'title', author_name: ['dasd'], first_publish_year: 1000, cover_i: 'htp' }], numFound: 0, numFoundExact: true, start: 0, q: 'the great gatsby', offset: [], num_found: 0 } as IBook,
+    books: { docs: dummyDocs, numFound, numFoundExact, start, q, offset, num_found } as IBook,
     status: '',
     error: '' as string | undefined,
-    sorted: ''
+    sorted: '',
+
 }
 
 //async thunk
@@ -49,6 +57,7 @@ const bookListSlice = createSlice({
                 state.sorted = 'Recently Published'
             }
         }
+
     },
     extraReducers(builder) {
         builder.addCase(searchBooks.pending, (state) => {
@@ -69,6 +78,7 @@ const bookListSlice = createSlice({
 //methods
 export const getAllBooks = (state: RootState) => state.bookList.books
 export const getSortedStatus = (state: RootState) => state.bookList.sorted
+
 
 export const { sortBooks } = bookListSlice.actions;
 

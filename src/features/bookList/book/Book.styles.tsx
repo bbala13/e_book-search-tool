@@ -14,7 +14,7 @@ export const StyledDiv = styled.div`
     @media screen and (min-width: 900px) {
         &:hover {
             box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.5);
-            transform: translateY(-10px);
+            transform: translate(0, -10px);
             border: transparent;
             transition: all 0.4s ease;
         }
@@ -48,10 +48,8 @@ export const StyledHeadingSpan = styled.span`
 `;
 
 export const StyledLi = styled.li`
-    display: block;
     padding: 0.2rem;
     width: 100%;
-    margin-inline: auto;
 `;
 
 export const StyledUL = styled.ul`
@@ -60,3 +58,16 @@ export const StyledUL = styled.ul`
     align-items: center;
     justify-content: center;
 `;
+
+// interface StyledImgProps {
+//     cover?: string;
+// }
+// export const StyledImg = styled.img<StyledImgProps>`
+
+//     src: ${({ cover }) => `https://covers.openlibrary.org/b/id/${cover}-M.jpg`};
+// `;
+
+// const baseUrl = 'https://covers.openlibrary.org/b/id/';
+// export const StyledImg = styled.img.attrs<StyledImgProps>((props) => ({
+//     src: false ? `` : `${baseUrl}${props.cover}-M.jpg`,
+// }))<StyledImgProps>``;
