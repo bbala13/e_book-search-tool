@@ -1,8 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { normalizeTitle } from '../../../utilities/string/stringUtils';
 import { searchBarResult } from '../../searchBar/searchBarSlice';
 import BookList from '../BookList';
-import { getAllBooks, searchBooks } from '../bookListSlice';
+import {
+    getAllBooks,
+    getSortedStatus,
+    searchBooks,
+    sortBooks,
+} from '../bookListSlice';
 import { StyledDiv } from './BookListContainer.styles';
 
 ////https://openlibrary.org/search.json?q=the+great+gatsby&fields=title,first_publish_year,isbn,author_name
@@ -15,6 +21,7 @@ const BookListContainer = () => {
     const searchItem = useSelector(searchBarResult);
     const dispatch = useDispatch();
     const { docs } = useSelector(getAllBooks);
+    const sortedStatus = useSelector(getSortedStatus);
 
     //fetch books
     useEffect(() => {
@@ -23,36 +30,38 @@ const BookListContainer = () => {
 
     //update books
     useEffect(() => {
+        if (docs && sortedStatus === 'Alphabetically') {
+            const sortedBooks = docs.slice().sort((a, b) => {
+                const normalizedA = normalizeTitle(a.title);
+                const normalizedB = normalizeTitle(b.title);
+                if (normalizedA < normalizedB) return -1;
+                if (normalizedA > normalizedB) return 1;
+                return 0;
+            });
+            return setBooks(sortedBooks);
+        }
+
+        if (docs && sortedStatus === 'Recently Published') {
+            const sortedBooks = docs.slice().sort((a, b) => {
+                if (a.first_publish_year > b.first_publish_year) return -1;
+                if (a.first_publish_year < b.first_publish_year) return 1;
+                return 0;
+            });
+            return setBooks(sortedBooks);
+        }
+
         setBooks(docs);
-    }, [docs]);
+    }, [docs, sortedStatus]);
 
     const [books, setBooks] = useState(docs);
-
-    function normalizeTitle(title: string) {
-        if (title[0] !== '"' && title[0] !== "'") return title;
-
-        return title.slice(1, title.length - 1);
-    }
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
         let selectedOption = e.target.value;
         if (books) {
             if (selectedOption === 'Alphabetically') {
-                const sortedBooks = books.slice().sort((a, b) => {
-                    const normalizedA = normalizeTitle(a.title);
-                    const normalizedB = normalizeTitle(b.title);
-                    if (normalizedA < normalizedB) return -1;
-                    if (normalizedA > normalizedB) return 1;
-                    return 0;
-                });
-                setBooks(sortedBooks);
+                dispatch(sortBooks(selectedOption));
             } else if (selectedOption === 'Recently Published') {
-                const sortedBooks = books.slice().sort((a, b) => {
-                    if (a.first_publish_year > b.first_publish_year) return -1;
-                    if (a.first_publish_year < b.first_publish_year) return 1;
-                    return 0;
-                });
-                setBooks(sortedBooks);
+                dispatch(sortBooks(selectedOption));
             }
         }
     };
