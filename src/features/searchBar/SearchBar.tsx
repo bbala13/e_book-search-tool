@@ -23,18 +23,16 @@ const SearchBar = () => {
 
     return (
         <form role="search" onSubmit={onSubmitHandler}>
-            <label htmlFor="search-bar">
-                <span className="visually-hidden">Search</span>
-            </label>
+            <label htmlFor="search-bar"></label>
             <input
                 type="text"
                 id="search-bar"
                 onChange={onChangeHandler}
                 value={searchInput}
+                name="search bar"
+                placeholder="Enter book title..."
             />
-            <button type="submit">
-                <span className="visually-hidden">Submit Search</span>
-            </button>
+            <button type="submit" title="Submit search"></button>
         </form>
     );
 };

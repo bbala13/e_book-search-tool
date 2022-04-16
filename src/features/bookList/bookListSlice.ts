@@ -19,7 +19,7 @@ export interface IBook {
 }
 
 const initialState = {
-    books: {} as IBook,
+    books: { docs: [{ title: 'title', author_name: ['dasd'], first_publish_year: 1000, cover_i: 'htp' }], numFound: 0, numFoundExact: true, start: 0, q: 'the great gatsby', offset: [], num_found: 0 } as IBook,
     status: '',
     error: '' as string | undefined,
 }
