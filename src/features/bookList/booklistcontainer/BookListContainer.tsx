@@ -9,6 +9,7 @@ import {
     searchBooks,
     sortBooks,
 } from '../bookListSlice';
+import SortSelect from '../sortselect/SortSelect';
 import { StyledDiv } from './BookListContainer.styles';
 
 ////https://openlibrary.org/search.json?q=the+great+gatsby&fields=title,first_publish_year,isbn,author_name
@@ -68,16 +69,7 @@ const BookListContainer = () => {
 
     return (
         <StyledDiv>
-            <label htmlFor="sort-books">Sort books:</label>
-            <select
-                id="sort-books"
-                name="sort-books"
-                onChange={onChangeHandler}
-            >
-                <option value="">Select an option</option>
-                <option value="Alphabetically">Alphabetically</option>
-                <option value="Recently Published">Recently published</option>
-            </select>
+            <SortSelect />
             <BookList books={books} />
         </StyledDiv>
     );

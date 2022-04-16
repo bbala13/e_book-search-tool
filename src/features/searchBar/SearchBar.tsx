@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import useDebounce from '../../hooks/useDebounce';
+import { StyledInput } from './SearchBar.styles';
 import { newSearchInput } from './searchBarSlice';
 
 const SearchBar = () => {
@@ -24,7 +25,7 @@ const SearchBar = () => {
     return (
         <form role="search" onSubmit={onSubmitHandler}>
             <label htmlFor="search-bar"></label>
-            <input
+            <StyledInput
                 type="text"
                 id="search-bar"
                 onChange={onChangeHandler}
