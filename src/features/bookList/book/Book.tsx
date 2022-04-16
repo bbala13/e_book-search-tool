@@ -1,13 +1,13 @@
 import { IDocument } from '../bookListSlice';
-import { BookContents, StyledDiv, ImgContainer } from './Book.styles';
+import {
+    BookContents,
+    StyledDiv,
+    ImgContainer,
+    StyledHeadingSpan,
+    StyledLi,
+    StyledUL,
+} from './Book.styles';
 import imageNotFound from '../../../notFoundAssets/imageNotFound.jpg';
-
-interface Props {
-    title: string;
-    cover: string | undefined;
-    author_name: string[] | undefined;
-    first_publish_year: number;
-}
 
 const Book = ({
     title,
@@ -19,20 +19,14 @@ const Book = ({
     let authors: string;
     if (author_name) {
         authors = author_name.join(', ');
-        // if (author_name.length > 1) {
-        //     console.log(author_name);
-        // }
     } else {
         authors = '';
     }
-
-    //console.log(cover);let newCover = book.cover_i
 
     return (
         <StyledDiv>
             {/* <BookCover coverUrl={cover}></BookCover> */}
             <BookContents>
-                <li>{title}</li>
                 {cover_i ? (
                     <img
                         src={`https://covers.openlibrary.org/b/id/${cover_i}-M.jpg`}
@@ -50,8 +44,18 @@ const Book = ({
                     </ImgContainer>
                 )}
 
-                <li>{authors}</li>
-                <li>{first_publish_year}</li>
+                <StyledUL>
+                    <StyledLi>
+                        <StyledHeadingSpan>Title:</StyledHeadingSpan> {title}
+                    </StyledLi>
+                    <StyledLi>
+                        <StyledHeadingSpan>Author:</StyledHeadingSpan> {authors}
+                    </StyledLi>
+                    <StyledLi>
+                        <StyledHeadingSpan>Published Year:</StyledHeadingSpan>{' '}
+                        {first_publish_year}
+                    </StyledLi>
+                </StyledUL>
             </BookContents>
         </StyledDiv>
     );

@@ -14,7 +14,8 @@ const GlobalStyle = createGlobalStyle`
 }
 
 p, label, li{
-    color:var(--text-dark)
+    color:var(--text-dark);
+    line-height: 1.5;
 }
 
 *,*::before,*::after{
@@ -37,7 +38,6 @@ h1{
 `
 
 export const GlobalContainer = styled.div`
-margin-bottom: 1rem;
 max-width:1200px;
 margin-inline: auto;
 `

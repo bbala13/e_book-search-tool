@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { sortBooks } from '../bookListSlice';
+import { Container, StyledLabel, StyledSelect } from './SortSelect.styles';
 
 const SortSelect = () => {
     const dispatch = useDispatch();
@@ -13,9 +14,9 @@ const SortSelect = () => {
         }
     };
     return (
-        <>
-            <label htmlFor="sort-books">Sort books:</label>
-            <select
+        <Container>
+            <StyledLabel htmlFor="sort-books">Sort books:</StyledLabel>
+            <StyledSelect
                 id="sort-books"
                 name="sort-books"
                 onChange={onChangeHandler}
@@ -23,8 +24,8 @@ const SortSelect = () => {
                 <option value="">Select an option</option>
                 <option value="Alphabetically">Alphabetically</option>
                 <option value="Recently Published">Recently published</option>
-            </select>
-        </>
+            </StyledSelect>
+        </Container>
     );
 };
 

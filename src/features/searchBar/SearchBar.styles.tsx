@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { GlobalContainer } from '../../globalStyles';
 
 export const StyledInput = styled.input`
     border-radius: 2px;
@@ -10,6 +9,7 @@ export const StyledInput = styled.input`
     padding: 0.8rem;
     margin-top: 1rem;
     height: 41px;
+    font-size: 1rem;
 
     &::-moz-placeholder {
         color: var(--text-dark);
@@ -35,5 +35,10 @@ export const StyledInput = styled.input`
     @media screen and (max-width: 900px) {
         height: 50px;
         width: 350px;
+
+        &:focus {
+            width: 360px;
+            height: 55px;
+        }
     }
 `;
