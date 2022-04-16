@@ -28,13 +28,21 @@ const BookListContainer = () => {
 
     const [books, setBooks] = useState(docs);
 
+    function normalizeTitle(title: string) {
+        if (title[0] !== '"' && title[0] !== "'") return title;
+
+        return title.slice(1, title.length - 1);
+    }
+
     const onChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
         let selectedOption = e.target.value;
         if (books) {
             if (selectedOption === 'Alphabetically') {
                 const sortedBooks = books.slice().sort((a, b) => {
-                    if (a.title < b.title) return -1;
-                    if (a.title > b.title) return 1;
+                    const normalizedA = normalizeTitle(a.title);
+                    const normalizedB = normalizeTitle(b.title);
+                    if (normalizedA < normalizedB) return -1;
+                    if (normalizedA > normalizedB) return 1;
                     return 0;
                 });
                 setBooks(sortedBooks);
