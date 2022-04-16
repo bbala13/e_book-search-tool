@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import useDebounce from '../../hooks/useDebounce';
-import { newSearchInput, searchBarResult } from './searchBarSlice';
+import { newSearchInput } from './searchBarSlice';
 
 const SearchBar = () => {
     const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {

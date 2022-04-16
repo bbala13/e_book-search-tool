@@ -1,6 +1,6 @@
-import React from 'react';
 import { IDocument } from '../bookListSlice';
-import { BookContents, BookCover, StyledDiv } from './Book.styles';
+import { BookContents, StyledDiv, ImgContainer } from './Book.styles';
+import imageNotFound from '../../../notFoundAssets/imageNotFound.jpg';
 
 interface Props {
     title: string;
@@ -26,14 +26,30 @@ const Book = ({
         authors = '';
     }
 
-    //console.log(cover);
+    //console.log(cover);let newCover = book.cover_i
 
     return (
         <StyledDiv>
             {/* <BookCover coverUrl={cover}></BookCover> */}
             <BookContents>
                 <li>{title}</li>
-                <img src={cover_i} alt="book cover" title={title} />
+                {cover_i ? (
+                    <img
+                        src={`https://covers.openlibrary.org/b/id/${cover_i}-M.jpg`}
+                        alt="book cover"
+                        title={title}
+                    />
+                ) : (
+                    <ImgContainer>
+                        <img
+                            src={imageNotFound}
+                            alt="book cover"
+                            title={title}
+                            style={{ height: '150px' }}
+                        />
+                    </ImgContainer>
+                )}
+
                 <li>{authors}</li>
                 <li>{first_publish_year}</li>
             </BookContents>
