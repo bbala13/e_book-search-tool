@@ -1,15 +1,15 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { sortBooks } from '../bookListSlice';
+import { sortBooks, SortChoices } from '../bookListSlice';
 import { Container, StyledLabel, StyledSelect } from './SortSelect.styles';
 
 const SortSelect = () => {
     const dispatch = useDispatch();
     const onChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
         let selectedOption = e.target.value;
-        if (selectedOption === 'Alphabetically') {
+        if (selectedOption === SortChoices.alphabetically) {
             dispatch(sortBooks(selectedOption));
-        } else if (selectedOption === 'Recently Published') {
+        } else if (selectedOption === SortChoices.recently_published) {
             dispatch(sortBooks(selectedOption));
         }
     };
@@ -22,8 +22,12 @@ const SortSelect = () => {
                 onChange={onChangeHandler}
             >
                 <option value="">Select an option</option>
-                <option value="Alphabetically">Alphabetically</option>
-                <option value="Recently Published">Recently published</option>
+                <option value={SortChoices.alphabetically}>
+                    Alphabetically
+                </option>
+                <option value={SortChoices.recently_published}>
+                    Recently published
+                </option>
             </StyledSelect>
         </Container>
     );

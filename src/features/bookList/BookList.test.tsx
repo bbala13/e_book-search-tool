@@ -3,17 +3,20 @@ import { Provider } from 'react-redux';
 import { store } from './../../app/store';
 import BookList from './BookList';
 import dummyBookData from '../../fixtures/dummyData/searchResults.json';
+import { IDocument } from './bookListSlice';
 
-// const renderComponent = () =>
-//     render(
-//         <Provider store={store}>
-//             <BookList />
-//         </Provider>
-//     );
+const { docs } = dummyBookData;
+const myDocs = docs as IDocument[];
+const renderComponent = () =>
+    render(
+        <Provider store={store}>
+            <BookList books={myDocs} />
+        </Provider>
+    );
 
 describe('BookList', () => {
     test('should render book list', () => {
-        //renderComponent();
+        renderComponent();
 
         expect(
             screen.getByRole('list', { name: /book list/i })
@@ -25,8 +28,6 @@ describe('BookList', () => {
 
     //     const listItems = screen.getAllByText(/gatsby/i) as HTMLUListElement[];
 
-    //     expect(listItems.length).toBe(dummyBookData.numFound);
+    //     expect(listItems.length).toBe(myDocs.length);
     // });
 });
-
-//https://openlibrary.org/search.json?q=the+great+gatsby&fields=title,first_publish_year,isbn,author_name

@@ -24,7 +24,9 @@ const SearchBar = () => {
 
     return (
         <form role="search" onSubmit={onSubmitHandler}>
-            <label htmlFor="search-bar"></label>
+            <label htmlFor="search-bar">
+                <span className="visually-hidden">Search</span>
+            </label>
             <StyledInput
                 type="text"
                 id="search-bar"
@@ -33,7 +35,9 @@ const SearchBar = () => {
                 name="search bar"
                 placeholder="Enter book title..."
             />
-            <button type="submit" title="Submit search"></button>
+            <button type="submit">
+                <span className="visually-hidden">Submit Search</span>
+            </button>
         </form>
     );
 };

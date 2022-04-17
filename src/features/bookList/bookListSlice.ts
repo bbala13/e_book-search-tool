@@ -44,17 +44,21 @@ export const searchBooks = createAsyncThunk('bookList/getBooks', async (searchQu
 }
 )
 
+export const SortChoices = {
+    alphabetically: 'Alphabetically',
+    recently_published: 'Recently Published'
+} as const;
 
 const bookListSlice = createSlice({
     name: 'bookList',
     initialState,
     reducers: {
         sortBooks: (state, action: PayloadAction<string>) => {
-            if (action.payload === 'Alphabetically') {
-                state.sorted = 'Alphabetically'
+            if (action.payload === SortChoices.alphabetically) {
+                state.sorted = SortChoices.alphabetically
             }
-            if (action.payload === 'Recently Published') {
-                state.sorted = 'Recently Published'
+            if (action.payload === SortChoices.recently_published) {
+                state.sorted = SortChoices.recently_published
             }
         }
 
