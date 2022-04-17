@@ -7,7 +7,7 @@ export const StyledInput = styled.input`
     appearance: none;
     width: 300px;
     padding: 0.8rem;
-    margin-top: 1rem;
+
     height: 41px;
     font-size: 1rem;
 
@@ -41,4 +41,31 @@ export const StyledInput = styled.input`
             height: 55px;
         }
     }
+`;
+
+export const StyledImg = styled.img`
+    height: 20px;
+    display: block;
+    margin: auto;
+`;
+
+export const StyledBtn = styled.button`
+    background-color: white;
+    align-self: stretch;
+    border: none;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 50%;
+    transform: translate(-100%, -50%);
+    border-radius: 2px;
+    &:focus {
+        outline: solid var(--inverted);
+    }
+`;
+
+export const StyledForm = styled.form`
+    position: relative;
+    width: max-content;
+    margin-inline: auto;
 `;

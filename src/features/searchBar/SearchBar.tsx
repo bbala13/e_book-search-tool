@@ -1,8 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import useDebounce from '../../hooks/useDebounce';
-import { StyledInput } from './SearchBar.styles';
+import {
+    StyledImg,
+    StyledInput,
+    StyledBtn,
+    StyledForm,
+} from './SearchBar.styles';
 import { newSearchInput } from './searchBarSlice';
+import searchSVG from '../../assets/imgs/search.svg';
 
 const SearchBar = () => {
     const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
@@ -11,7 +17,7 @@ const SearchBar = () => {
     };
 
     const [searchInput, setSearchInput] = useState('');
-    const debouncedValue = useDebounce(searchInput, 210);
+    const debouncedValue = useDebounce(searchInput, 200);
 
     const dispatch = useDispatch();
 
@@ -20,7 +26,7 @@ const SearchBar = () => {
     };
 
     return (
-        <form role="search" onSubmit={onSubmitHandler}>
+        <StyledForm role="search" onSubmit={onSubmitHandler}>
             <label htmlFor="search-bar">
                 <span className="visually-hidden">Search</span>
             </label>
@@ -32,10 +38,11 @@ const SearchBar = () => {
                 name="search bar"
                 placeholder="Enter book title..."
             />
-            <button type="submit">
+            <StyledBtn type="submit">
                 <span className="visually-hidden">Submit Search</span>
-            </button>
-        </form>
+                <StyledImg src={searchSVG} alt="magnifying glass" role="img" />
+            </StyledBtn>
+        </StyledForm>
     );
 };
 

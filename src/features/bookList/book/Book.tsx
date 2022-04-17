@@ -7,7 +7,7 @@ import {
     StyledLi,
     StyledUL,
 } from './Book.styles';
-import imageNotFound from '../../../notFoundAssets/imageNotFound.jpg';
+import imageNotFound from '../../../assets/notFoundAssets/imageNotFound.jpg';
 
 const Book = ({
     title,
