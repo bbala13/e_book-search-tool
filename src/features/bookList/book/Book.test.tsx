@@ -1,6 +1,4 @@
 import { render, screen } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import { store } from './../../../app/store';
 import Book from './Book';
 import dummyData from '../../../fixtures/dummyData/searchResults.json';
 import { IDocument } from '../bookListSlice';
@@ -11,14 +9,12 @@ const { author_name, first_publish_year, title, cover_i } =
 
 const renderComponent = () =>
     render(
-        <Provider store={store}>
-            <Book
-                author_name={author_name}
-                first_publish_year={first_publish_year}
-                title={title}
-                cover_i={cover_i}
-            />
-        </Provider>
+        <Book
+            author_name={author_name}
+            first_publish_year={first_publish_year}
+            title={title}
+            cover_i={cover_i}
+        />
     );
 
 describe('Book', () => {

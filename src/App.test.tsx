@@ -1,26 +1,29 @@
-import React from 'react';
-import { render, screen, within } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import { store } from './app/store';
 import App from './App';
+import { render, screen, within } from './utilities/test/test-utils';
+import dummyData from './fixtures/dummyData/searchResults.json';
 
-const renderComponent = () =>
-    render(
-        <Provider store={store}>
-            <App />
-        </Provider>
-    );
+const renderComponentWithData = () =>
+    render(<App />, {
+        preloadedState: {
+            bookList: { books: { ...dummyData }, status: 'success' },
+        },
+    });
+
+// const renderComponentWithoutData = () =>
+//     render(<App />, {
+//         preloadedState: {},
+//     });
 
 describe('App', () => {
     test('should render title', () => {
-        renderComponent();
+        renderComponentWithData();
         expect(
             screen.getByRole('heading', { level: 1, name: /book search tool/i })
         ).toBeInTheDocument();
     });
 
     test('should render search bar', () => {
-        renderComponent();
+        renderComponentWithData();
         const searchBarForm = screen.getByRole('search');
         expect(searchBarForm).toBeInTheDocument();
 
@@ -34,7 +37,7 @@ describe('App', () => {
     });
 
     test('should render book list', () => {
-        renderComponent();
+        renderComponentWithData();
 
         expect(
             screen.getByRole('list', { name: /book list/i })

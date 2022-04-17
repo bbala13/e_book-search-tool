@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledDiv = styled.div`
+export const StyledDiv = styled.li`
     border: 1px dashed var(--cool-black);
 
     display: flex;

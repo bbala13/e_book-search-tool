@@ -13,10 +13,10 @@ const BookList = ({ books }: BookListProps) => {
         <GlobalContainer>
             <StyledUL aria-label="book list">
                 {books &&
-                    books.map((book) => {
+                    books.map((book, index) => {
                         return (
                             <SingleBook
-                                key={Math.random()}
+                                key={index}
                                 author_name={book.author_name}
                                 first_publish_year={book.first_publish_year}
                                 cover_i={book.cover_i}

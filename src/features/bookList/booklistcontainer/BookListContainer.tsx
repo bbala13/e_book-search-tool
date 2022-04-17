@@ -10,7 +10,12 @@ import {
     searchBooks,
 } from '../bookListSlice';
 import SortSelect from '../sortselect/SortSelect';
-import { StyledDiv } from './BookListContainer.styles';
+import {
+    StyledDiv,
+    StyledImg,
+    FlexContainer,
+} from './BookListContainer.styles';
+import initialSvg from '../../../assets/imgs/initial.svg';
 
 ////https://openlibrary.org/search.json?q=the+great+gatsby&fields=title,first_publish_year,isbn,author_name
 
@@ -59,6 +64,14 @@ const BookListContainer = () => {
 
     const [books, setBooks] = useState(docs);
 
+    const noDataFound = () => {
+        return (
+            <p style={{ textAlign: 'center', padding: '8rem' }}>
+                No matching results
+            </p>
+        );
+    };
+
     const renderBookList = (status: string) => {
         if (status === 'loading') {
             return (
@@ -67,21 +80,27 @@ const BookListContainer = () => {
                 </p>
             );
         } else if (status === 'success') {
+            if (books.length === 0) {
+                return noDataFound();
+            }
+
             return <BookList books={books} />;
         } else if (status === 'error') {
+            return noDataFound();
+        } else if (status === 'initial') {
+            return (
+                <FlexContainer>
+                    <StyledImg src={initialSvg} alt="balloons" role="img" />;
+                    <p>Welcome </p>
+                </FlexContainer>
+            );
         }
     };
 
     return (
         <StyledDiv>
             <SortSelect />
-            {books.length !== 0 ? (
-                renderBookList(fetchStatus)
-            ) : (
-                <p style={{ textAlign: 'center', padding: '8rem' }}>
-                    No matching results
-                </p>
-            )}
+            {renderBookList(fetchStatus)}
         </StyledDiv>
     );
 };

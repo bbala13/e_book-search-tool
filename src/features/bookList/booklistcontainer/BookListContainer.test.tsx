@@ -1,41 +1,39 @@
-import { render, screen } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import { store } from '../../../app/store';
+import { render, screen } from '../../../utilities/test/test-utils';
 import BookListContainer from './BookListContainer';
+import dummyData from '../../../fixtures/dummyData/searchResults.json';
 
-const renderComponent = () =>
-    render(
-        <Provider store={store}>
-            <BookListContainer />
-        </Provider>
-    );
+const renderComponentSuccess = () =>
+    render(<BookListContainer />, {
+        preloadedState: {
+            bookList: { books: { ...dummyData }, status: 'success' },
+        },
+    });
+
+const renderComponentError = () =>
+    render(<BookListContainer />, {
+        preloadedState: {
+            bookList: { books: { ...dummyData, docs: [] }, status: 'error' },
+        },
+    });
 
 describe('BookListContainer', () => {
     test('should render combobox', () => {
-        renderComponent();
+        renderComponentSuccess();
         const comboBox = screen.getByRole('combobox');
         expect(comboBox).toBeInTheDocument();
     });
 
     test('should render book list', () => {
-        renderComponent();
+        renderComponentSuccess();
 
         expect(
             screen.getByRole('list', { name: /book list/i })
         ).toBeInTheDocument();
     });
 
-    // test('should not render book list', () => {
-    //     const renderComponent = () => {
-    //         render(
-    //             <Provider store={configureStore({ reducer: {} })}>
-    //                 <BookListContainer />
-    //             </Provider>
-    //         );
-    //     };
+    test('should not render book list', () => {
+        renderComponentError();
 
-    //     renderComponent();
-
-    //     expect(screen.getByText('No matching results/i')).toBeInTheDocument();
-    // });
+        expect(screen.getByText('No matching results')).toBeInTheDocument();
+    });
 });
