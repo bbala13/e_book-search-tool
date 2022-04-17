@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Container, StyledButton, StyledUL } from './Pagination.styles';
 import {
@@ -57,10 +57,8 @@ const Pagination = ({ itemsPerPage }: Props) => {
 
         dispatch(updateCurrentPage(newPageValue));
         dispatch(updateCurrentActivePage(newPageValue));
-        //setCurrentActive(newPageValue);
     };
 
-    //const [currentActive, setCurrentActive] = useState(1);
     const currentActivePage = useSelector(getCurrentActivePage);
 
     return (
