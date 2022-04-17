@@ -21,7 +21,7 @@ const SortSelect = () => {
                 name="sort-books"
                 onChange={onChangeHandler}
             >
-                <option value="">Select an option</option>
+                <option value="Select an option">Select an option</option>
                 <option value={SortChoices.alphabetically}>
                     Alphabetically
                 </option>
