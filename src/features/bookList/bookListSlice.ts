@@ -34,7 +34,7 @@ export const initialState = {
 }
 
 //async thunk
-const BASE_URL = 'http://openlibrary.org/'
+const BASE_URL = 'https://openlibrary.org/'
 const SEARCH_PATH = 'search.json?title='
 const FIELDS = '&fields=title,first_publish_year,cover_i,author_name'
 
