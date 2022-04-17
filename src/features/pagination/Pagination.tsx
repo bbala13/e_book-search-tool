@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Container, StyledButton, StyledUL } from './Pagination.styles';
 import {
+    getCurrentActivePage,
     getNumItemsFound,
+    updateCurrentActivePage,
     updateCurrentPage,
     updateItemsPerPage,
 } from './paginationSlice';
@@ -54,10 +56,12 @@ const Pagination = ({ itemsPerPage }: Props) => {
         const newPageValue = Number(target.outerText);
 
         dispatch(updateCurrentPage(newPageValue));
-        setCurrentActive(newPageValue);
+        dispatch(updateCurrentActivePage(newPageValue));
+        //setCurrentActive(newPageValue);
     };
 
-    const [currentActive, setCurrentActive] = useState(1);
+    //const [currentActive, setCurrentActive] = useState(1);
+    const currentActivePage = useSelector(getCurrentActivePage);
 
     return (
         <Container>
@@ -68,13 +72,13 @@ const Pagination = ({ itemsPerPage }: Props) => {
                             <li key={index}>
                                 <StyledButton
                                     aria-label={
-                                        currentActive === box
+                                        currentActivePage === box
                                             ? `Current Page, Page ${box}`
                                             : `Goto Page ${box}`
                                     }
                                     onClick={onClickHandler}
                                     active={
-                                        currentActive === box ? true : false
+                                        currentActivePage === box ? true : false
                                     }
                                 >
                                     {box}

@@ -2,6 +2,7 @@ import paginationReducer, {
     updateCurrentPage,
     updateItemsPerPage,
     updateNumItemsFound,
+    updateCurrentActivePage,
 } from './paginationSlice';
 
 describe('paginationSlice', () => {
@@ -9,6 +10,7 @@ describe('paginationSlice', () => {
         currentPage: 1,
         itemsPerPage: 10,
         numItemsFound: 100,
+        currentActivePage: 1,
     };
     test('should handle initial state', () => {
         expect(paginationReducer(undefined, { type: 'unknown' })).toEqual(
@@ -41,5 +43,12 @@ describe('paginationSlice', () => {
                 updateNumItemsFound(newNumItemsFound)
             )
         ).toEqual({ ...initialState, numItemsFound: newNumItemsFound });
+    });
+
+    test('should handle update for current active page', () => {
+        const newPage = 4;
+        expect(
+            paginationReducer(initialState, updateCurrentActivePage(newPage))
+        ).toEqual({ ...initialState, currentActivePage: newPage });
     });
 });

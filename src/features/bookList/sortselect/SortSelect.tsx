@@ -1,6 +1,9 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { updateCurrentPage } from '../../pagination/paginationSlice';
+import {
+    updateCurrentActivePage,
+    updateCurrentPage,
+} from '../../pagination/paginationSlice';
 import { sortBooks, SortChoices } from '../bookListSlice';
 import { Container, StyledLabel, StyledSelect } from './SortSelect.styles';
 
@@ -10,9 +13,11 @@ const SortSelect = () => {
         let selectedOption = e.target.value;
         if (selectedOption === SortChoices.alphabetically) {
             dispatch(updateCurrentPage(1));
+            dispatch(updateCurrentActivePage(1));
             dispatch(sortBooks(selectedOption));
         } else if (selectedOption === SortChoices.recently_published) {
             dispatch(updateCurrentPage(1));
+            dispatch(updateCurrentActivePage(1));
             dispatch(sortBooks(selectedOption));
         }
     };
