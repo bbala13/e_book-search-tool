@@ -7,7 +7,6 @@ import {
     getAllBooks,
     getFetchStatus,
     getSortedStatus,
-    IDocument,
     searchBooks,
 } from '../bookListSlice';
 import SortSelect from '../sortselect/SortSelect';
