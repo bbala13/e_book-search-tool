@@ -8,10 +8,11 @@ I spent about 16 hours +/- 1 hour for the coding portion of the test.
 1. A: If I had more time, I would:
 
     1. Dynamically render images based on viewport size for better performance
-    2. Create a different style of pagination for the mobile view
-    3. Design a better layout and theme
-    4. Add a loading spinner
-    5. Change the favicon
+    2. Add integration tests
+    3. Create a different style of pagination for the mobile view
+    4. Design a better layout and theme
+    5. Add a loading spinner
+    6. Change the favicon
 
 2. What was the most useful feature that was added to the latest version of your chosen language? Please include a snippet of code that shows how you've used it.
 
