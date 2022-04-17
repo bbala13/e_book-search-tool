@@ -13,7 +13,9 @@ const GlobalStyle = createGlobalStyle`
     --inverted:#ffd19c;
 }
 
+
 body{
+    
     font-family: Arial, Helvetica, sans-serif;
     color:var(--text-dark);
     line-height: 1.5;

@@ -27,7 +27,7 @@ const dummyDocs = docs as IDocument[];
 
 const initialState = {
     books: { docs: dummyDocs, numFound, numFoundExact, start, q, offset, num_found } as IBook,
-    status: '',
+    status: 'success',
     error: '' as string | undefined,
     sorted: '',
 
@@ -82,6 +82,7 @@ const bookListSlice = createSlice({
 //methods
 export const getAllBooks = (state: RootState) => state.bookList.books
 export const getSortedStatus = (state: RootState) => state.bookList.sorted
+export const getFetchStatus = (state: RootState) => state.bookList.status
 
 
 export const { sortBooks } = bookListSlice.actions;

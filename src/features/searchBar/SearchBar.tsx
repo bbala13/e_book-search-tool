@@ -7,20 +7,17 @@ import { newSearchInput } from './searchBarSlice';
 const SearchBar = () => {
     const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        dispatch(newSearchInput(searchInput));
+        dispatch(newSearchInput(debouncedValue));
     };
 
     const [searchInput, setSearchInput] = useState('');
-    const debouncedSearch = useDebounce(searchInput, 500);
+    const debouncedValue = useDebounce(searchInput, 210);
 
     const dispatch = useDispatch();
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchInput(e.target.value);
     };
-    useEffect(() => {
-        console.log('request made');
-    }, [debouncedSearch]);
 
     return (
         <form role="search" onSubmit={onSubmitHandler}>

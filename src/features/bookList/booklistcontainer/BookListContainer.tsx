@@ -5,9 +5,10 @@ import { searchBarResult } from '../../searchBar/searchBarSlice';
 import BookList from '../BookList';
 import {
     getAllBooks,
+    getFetchStatus,
     getSortedStatus,
+    IDocument,
     searchBooks,
-    sortBooks,
 } from '../bookListSlice';
 import SortSelect from '../sortselect/SortSelect';
 import { StyledDiv } from './BookListContainer.styles';
@@ -23,6 +24,7 @@ const BookListContainer = () => {
     const dispatch = useDispatch();
     const { docs } = useSelector(getAllBooks);
     const sortedStatus = useSelector(getSortedStatus);
+    const fetchStatus = useSelector(getFetchStatus);
 
     //fetch books
     useEffect(() => {
@@ -58,10 +60,29 @@ const BookListContainer = () => {
 
     const [books, setBooks] = useState(docs);
 
+    const renderBookList = (status: string) => {
+        if (status === 'loading') {
+            return (
+                <p style={{ textAlign: 'center', padding: '8rem' }}>
+                    Loading Data
+                </p>
+            );
+        } else if (status === 'success') {
+            return <BookList books={books} />;
+        } else if (status === 'error') {
+        }
+    };
+
     return (
         <StyledDiv>
             <SortSelect />
-            <BookList books={books} />
+            {books.length !== 0 ? (
+                renderBookList(fetchStatus)
+            ) : (
+                <p style={{ textAlign: 'center', padding: '8rem' }}>
+                    No matching results
+                </p>
+            )}
         </StyledDiv>
     );
 };
