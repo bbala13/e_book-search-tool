@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { normalizeTitle } from '../../../utilities/string/stringUtils';
 import { searchBarResult } from '../../searchBar/searchBarSlice';
@@ -17,6 +17,7 @@ import {
 } from './BookListContainer.styles';
 import initialSvg from '../../../assets/imgs/initial.svg';
 import Pagination from '../../pagination/Pagination';
+import { updateNumItemsFound } from '../../pagination/paginationSlice';
 
 ////https://openlibrary.org/search.json?q=the+great+gatsby&fields=title,first_publish_year,isbn,author_name
 
@@ -27,7 +28,7 @@ import Pagination from '../../pagination/Pagination';
 const BookListContainer = () => {
     const searchItem = useSelector(searchBarResult);
     const dispatch = useDispatch();
-    const { docs } = useSelector(getAllBooks);
+    const { docs, numFound } = useSelector(getAllBooks);
     const sortedStatus = useSelector(getSortedStatus);
     const fetchStatus = useSelector(getFetchStatus);
 
@@ -40,6 +41,8 @@ const BookListContainer = () => {
 
     //update books
     useEffect(() => {
+        dispatch(updateNumItemsFound(numFound));
+
         if (docs && sortedStatus === 'Alphabetically') {
             const sortedBooks = docs.slice().sort((a, b) => {
                 const normalizedA = normalizeTitle(a.title);
@@ -61,7 +64,7 @@ const BookListContainer = () => {
         }
 
         setBooks(docs);
-    }, [docs, sortedStatus]);
+    }, [docs, sortedStatus, numFound, dispatch]);
 
     const [books, setBooks] = useState(docs);
 
@@ -101,7 +104,7 @@ const BookListContainer = () => {
         <StyledDiv>
             <SortSelect />
             {renderBookList(fetchStatus)}
-            <Pagination itemsPerPage={10} />
+            {fetchStatus === 'success' && <Pagination itemsPerPage={10} />}
         </StyledDiv>
     );
 };

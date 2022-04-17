@@ -1,5 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Container, StyledButton, StyledUL } from './Pagination.styles';
 import {
     getNumItemsFound,
     updateCurrentPage,
@@ -38,33 +39,52 @@ const Pagination = ({ itemsPerPage }: Props) => {
 
     const totalBoxes = getTotalBoxes();
 
+    const scrollToTop = () => {
+        setTimeout(() => {
+            window.scroll({ top: 0, behavior: 'smooth' });
+        }, 20);
+    };
+
     const onClickHandler = (
         e: React.MouseEvent<HTMLButtonElement, MouseEvent>
     ) => {
         e.preventDefault();
+        scrollToTop();
         const target = e.target as HTMLButtonElement;
         const newPageValue = Number(target.outerText);
+
         dispatch(updateCurrentPage(newPageValue));
-        console.log(target.outerText);
+        setCurrentActive(newPageValue);
     };
 
+    const [currentActive, setCurrentActive] = useState(1);
+
     return (
-        <nav role="navigation" aria-label="Pagination Navigation">
-            <ul>
-                {totalBoxes.map((box, index) => {
-                    return (
-                        <li key={index}>
-                            <button
-                                aria-label={`Goto Page ${box}`}
-                                onClick={onClickHandler}
-                            >
-                                {box}
-                            </button>
-                        </li>
-                    );
-                })}
-            </ul>
-        </nav>
+        <Container>
+            <nav role="navigation" aria-label="Pagination Navigation">
+                <StyledUL>
+                    {totalBoxes.map((box, index) => {
+                        return (
+                            <li key={index}>
+                                <StyledButton
+                                    aria-label={
+                                        currentActive === box
+                                            ? `Current Page, Page ${box}`
+                                            : `Goto Page ${box}`
+                                    }
+                                    onClick={onClickHandler}
+                                    active={
+                                        currentActive === box ? true : false
+                                    }
+                                >
+                                    {box}
+                                </StyledButton>
+                            </li>
+                        );
+                    })}
+                </StyledUL>
+            </nav>
+        </Container>
     );
 };
 

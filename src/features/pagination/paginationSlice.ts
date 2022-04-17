@@ -5,7 +5,7 @@ import { RootState } from "../../app/store";
 const initialState = {
     currentPage: 1,
     itemsPerPage: 10,
-    numItemsFound: 100
+    numItemsFound: 100,
 }
 
 const paginationSlice = createSlice({
@@ -17,6 +17,9 @@ const paginationSlice = createSlice({
         },
         updateCurrentPage: (state, action: PayloadAction<number>) => {
             state.currentPage = action.payload
+        },
+        updateNumItemsFound: (state, action: PayloadAction<number>) => {
+            state.numItemsFound = action.payload
         }
 
 
@@ -27,6 +30,6 @@ export const getNumItemsFound = (state: RootState) => state.pagination.numItemsF
 export const getCurrentPage = (state: RootState) => state.pagination.currentPage;
 export const getItemsPerPage = (state: RootState) => state.pagination.itemsPerPage
 
-export const { updateItemsPerPage, updateCurrentPage } = paginationSlice.actions;
+export const { updateItemsPerPage, updateCurrentPage, updateNumItemsFound } = paginationSlice.actions;
 
 export default paginationSlice.reducer;
