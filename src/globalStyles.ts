@@ -47,6 +47,7 @@ a{
 
 h1{
     padding:1rem;
+    padding-bottom:2rem;
     
 }
 `

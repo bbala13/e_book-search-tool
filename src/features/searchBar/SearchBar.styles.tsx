@@ -59,8 +59,13 @@ export const StyledBtn = styled.button`
     top: 50%;
     transform: translate(-100%, -50%);
     border-radius: 2px;
+    cursor: pointer;
     &:focus {
         outline: solid var(--inverted);
+    }
+
+    @media screen and (max-width: 900px) {
+        height: 49px;
     }
 `;
 
