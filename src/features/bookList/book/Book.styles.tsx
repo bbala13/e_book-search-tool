@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const StyledDiv = styled.div`
     border: 1px dashed var(--cool-black);
+
     display: flex;
     min-height: 200px;
 

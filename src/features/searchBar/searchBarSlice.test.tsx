@@ -1,6 +1,6 @@
 import searchBarReducer, { newSearchInput } from './searchBarSlice';
 
-describe('searchBar reducer', () => {
+describe('searchBarSlice', () => {
     const initialState = '';
     test('should handle initial state', () => {
         expect(searchBarReducer(undefined, { type: 'unknown' })).toEqual('');
@@ -8,11 +8,11 @@ describe('searchBar reducer', () => {
 
     test('should handle new user input', () => {
         const userInput = 'some user input';
-        const actual = searchBarReducer(
+        const newState = searchBarReducer(
             initialState,
             newSearchInput(userInput)
         );
 
-        expect(actual).toBe(userInput);
+        expect(newState).toBe(userInput);
     });
 });

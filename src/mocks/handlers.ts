@@ -1,43 +1,38 @@
 import { rest } from 'msw';
+import dummyData from '../fixtures/dummyData/searchResults.json'
+
+function openLibApi(path: string) {
+    return `http://openlibrary.org${path}`
+}
+
+/*
+  return `http://openlibrary.org/search.json?q=${query}&fields=title,first_publish_year,cover_i,author_name`
+*/
 
 export const handlers = [
-    rest.post('/login', (req, res, ctx) => {
-        // Persist user's authentication in the session
 
-        sessionStorage.setItem('is-authenticated', 'true');
+    rest.get(openLibApi('/search.json'), (req, res, ctx) => {
 
-        return res(
-            // Respond with a 200 status code
 
-            ctx.status(200)
-        );
-    }),
+        const query = req.url.searchParams
+        console.log(query)
+        //success response
 
-    rest.get('/user', (req, res, ctx) => {
-        // Check if the user is authenticated in this session
-
-        const isAuthenticated = sessionStorage.getItem('is-authenticated');
-
-        if (!isAuthenticated) {
-            // If not authenticated, respond with a 403 error
-
-            return res(
-                ctx.status(403),
-
-                ctx.json({
-                    errorMessage: 'Not authorized',
-                })
-            );
-        }
-
-        // If authenticated, return a mocked user details
 
         return res(
             ctx.status(200),
 
-            ctx.json({
-                username: 'admin',
-            })
+            ctx.json(dummyData)
+        );
+    }),
+
+    rest.get(openLibApi('/error'), (req, res, ctx) => {
+
+        //error response
+        const errorData = { ...dummyData, docs: [] }
+        return res(
+            ctx.status(404),
+            ctx.json(errorData)
         );
     }),
 ];

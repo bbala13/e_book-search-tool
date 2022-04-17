@@ -25,7 +25,7 @@ const { docs, numFound, numFoundExact, num_found, offset, q, start } = dummyBook
 
 const dummyDocs = docs as IDocument[];
 
-const initialState = {
+export const initialState = {
     books: { docs: dummyDocs, numFound, numFoundExact, start, q, offset, num_found } as IBook,
     status: 'success',
     error: '' as string | undefined,

@@ -7,7 +7,7 @@ export const StyledInput = styled.input`
     appearance: none;
     width: 300px;
     padding: 0.8rem;
-
+    background-color: var(--background-light);
     height: 41px;
     font-size: 1rem;
 
