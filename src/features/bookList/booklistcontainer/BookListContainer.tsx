@@ -16,6 +16,7 @@ import {
     FlexContainer,
 } from './BookListContainer.styles';
 import initialSvg from '../../../assets/imgs/initial.svg';
+import Pagination from '../../pagination/Pagination';
 
 ////https://openlibrary.org/search.json?q=the+great+gatsby&fields=title,first_publish_year,isbn,author_name
 
@@ -83,15 +84,14 @@ const BookListContainer = () => {
             if (books.length === 0) {
                 return noDataFound();
             }
-
             return <BookList books={books} />;
         } else if (status === 'error') {
             return noDataFound();
         } else if (status === 'initial') {
             return (
                 <FlexContainer>
-                    <StyledImg src={initialSvg} alt="balloons" role="img" />;
-                    <p>Welcome </p>
+                    <StyledImg src={initialSvg} alt="balloons" role="img" />
+                    <p style={{ marginTop: '2rem' }}>Welcome </p>
                 </FlexContainer>
             );
         }
@@ -101,6 +101,7 @@ const BookListContainer = () => {
         <StyledDiv>
             <SortSelect />
             {renderBookList(fetchStatus)}
+            <Pagination itemsPerPage={10} />
         </StyledDiv>
     );
 };

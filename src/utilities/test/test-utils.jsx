@@ -6,13 +6,18 @@ import { Provider } from 'react-redux';
 // Import your own reducer
 import searchBarReducer from '../../features/searchBar/searchBarSlice';
 import bookListReducer from '../../features/bookList/bookListSlice';
+import paginationReducer from '../../features/pagination/paginationSlice';
 
 function render(
     ui,
     {
         preloadedState,
         store = configureStore({
-            reducer: { searchBar: searchBarReducer, bookList: bookListReducer },
+            reducer: {
+                searchBar: searchBarReducer,
+                bookList: bookListReducer,
+                pagination: paginationReducer,
+            },
             preloadedState,
         }),
         ...renderOptions

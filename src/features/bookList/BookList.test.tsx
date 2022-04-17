@@ -34,12 +34,4 @@ describe('BookList', () => {
         const listItem = screen.queryByAltText('book cover');
         expect(listItem).not.toBeInTheDocument();
     });
-
-    // test('should render books in book list', () => {
-    //     renderComponent();
-
-    //     const listItems = screen.getAllByText(/gatsby/i) as HTMLUListElement[];
-
-    //     expect(listItems.length).toBe(myDocs.length);
-    // });
 });

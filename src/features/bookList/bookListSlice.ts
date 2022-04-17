@@ -21,12 +21,12 @@ export interface IBook {
     offset: unknown
 }
 
-const { docs, numFound, numFoundExact, num_found, offset, q, start } = dummyBookListData;
+const { numFound, numFoundExact, num_found, offset, q, start } = dummyBookListData;
 
-const dummyDocs = docs as IDocument[];
+//const dummyDocs = docs as IDocument[];
 
 export const initialState = {
-    books: { docs: dummyDocs, numFound, numFoundExact, start, q, offset, num_found } as IBook,
+    books: { docs: [], numFound, numFoundExact, start, q, offset, num_found } as IBook,
     status: 'initial',
     error: '' as string | undefined,
     sorted: '',
@@ -35,7 +35,7 @@ export const initialState = {
 
 //async thunk
 const BASE_URL = 'http://openlibrary.org/'
-const SEARCH_PATH = 'search.json?q='
+const SEARCH_PATH = 'search.json?title='
 const FIELDS = '&fields=title,first_publish_year,cover_i,author_name'
 
 //dispatches pending action
