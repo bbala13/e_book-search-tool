@@ -14,7 +14,7 @@ export const handlers = [
     rest.get(openLibApi('/search.json'), (req, res, ctx) => {
 
 
-        const query = req.url.searchParams
+        ///const query = req.url.searchParams
         //console.log(query)
         //success response
 

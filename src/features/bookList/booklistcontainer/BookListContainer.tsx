@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { normalizeTitle } from '../../../utilities/string/stringUtils';
 import { searchBarResult } from '../../searchBar/searchBarSlice';
