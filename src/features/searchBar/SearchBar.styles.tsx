@@ -41,6 +41,20 @@ export const StyledInput = styled.input`
             height: 55px;
         }
     }
+
+    @media screen and (max-width: 400px) {
+        width: 250px;
+        &:focus {
+            width: 260px;
+        }
+    }
+
+    @media screen and (max-width: 295px) {
+        width: 150px;
+        &:focus {
+            width: 160px;
+        }
+    }
 `;
 
 export const StyledImg = styled.img`

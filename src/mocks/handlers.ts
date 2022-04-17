@@ -15,7 +15,7 @@ export const handlers = [
 
 
         const query = req.url.searchParams
-        console.log(query)
+        //console.log(query)
         //success response
 
 

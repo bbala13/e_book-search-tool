@@ -13,8 +13,12 @@ export const Container = styled(GlobalContainer)`
 export const StyledUL = styled.ul`
     display: flex;
     align-items: center;
-    justify-content: space-around;
     gap: 4px;
+    flex-wrap: wrap;
+
+    @media screen and (max-width: 900px) {
+        gap: 8px;
+    }
 `;
 
 interface StyledButtonProps {
@@ -39,5 +43,10 @@ export const StyledButton = styled.button<StyledButtonProps>`
     &:focus,
     &:hover {
         outline: solid var(--inverted);
+    }
+
+    @media screen and (max-width: 900px) {
+        height: 40px;
+        width: 35px;
     }
 `;

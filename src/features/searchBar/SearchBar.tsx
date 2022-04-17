@@ -26,7 +26,6 @@ const SearchBar = () => {
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchInput(e.target.value);
     };
-    console.log('search bar rerendered');
 
     return (
         <StyledForm role="search" onSubmit={onSubmitHandler}>
