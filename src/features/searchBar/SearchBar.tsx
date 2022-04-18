@@ -9,17 +9,21 @@ import {
 } from './SearchBar.styles';
 import { newSearchInput } from './searchBarSlice';
 import searchSVG from '../../assets/imgs/search.svg';
-import { updateCurrentPage } from '../pagination/paginationSlice';
+import {
+    updateCurrentActivePage,
+    updateCurrentPage,
+} from '../pagination/paginationSlice';
 
 const SearchBar = () => {
     const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         dispatch(updateCurrentPage(1));
+        dispatch(updateCurrentActivePage(1));
         dispatch(newSearchInput(debouncedValue));
     };
 
     const [searchInput, setSearchInput] = useState('');
-    const debouncedValue = useDebounce(searchInput, 150);
+    const debouncedValue = useDebounce(searchInput, 120);
 
     const dispatch = useDispatch();
 
