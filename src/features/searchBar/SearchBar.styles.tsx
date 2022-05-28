@@ -67,6 +67,7 @@ export const StyledBtn = styled.button`
     background-color: white;
     align-self: stretch;
     border: none;
+    outline: none;
     position: absolute;
     width: 40px;
     height: 40px;
